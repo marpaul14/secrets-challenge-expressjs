@@ -11,6 +11,20 @@ var isAuthenticated = false;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// function passwordCheck(req, res, next) {
+//   const password = req.body["password"];
+//   if (password === "ILoveProgramming") {
+//     isAuthenticated = true;
+//   }
+//   next();
+// }
+
+// app.use(passwordCheck);
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 app.post("/check", (req, res) => {
   const password = req.body["password"];
   if (password === "ILoveProgramming") {
@@ -23,10 +37,6 @@ app.post("/check", (req, res) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
 app.listen(port, () => {
-  console.log(`App running on port ${3000}`);
+  console.log(`App running on port ${port}`);
 });
